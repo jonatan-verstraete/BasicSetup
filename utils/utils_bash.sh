@@ -1,4 +1,4 @@
-# 2023-01-16 CHANGES IN THIS FILE WILL BE OVERWRITTEN
+# Version: 2023-03-10. 
 
 : '
      Functions related to apps, opening
@@ -11,7 +11,8 @@ newtab() (
 
 # opens with vs code
 code() (
-	open -a "/Applications/Visual Studio Code.app" $1 $2 ;# ${1:=''}
+	open -a "/Applications/Visual Studio Code.app" $1 $2 
+	# ${1:=''}
 )
 
 # opens with pages
@@ -160,18 +161,18 @@ clearcache() (
 '
 
 # copies to clipboard
-copy()(
-	$1 | pbcopy
-)
+#copy()(
+#	$1 | pbcopy
+#)
 
 # gives network info
 netw()(
 	[[ "$1" == "-4" ]] && ip4=1 || ip4=0
-	ip=`ipconfig getifaddr en0`
-	subnet=`ipconfig getoption en0 subnet_mask`
-	dns=`ipconfig getoption en0 domain_name_server`
+	ip=$(ipconfig getifaddr en0)
+	subnet=$(ipconfig getoption en0 subnet_mask)
+	dns=$(ipconfig getoption en0 domain_name_server)
 
-	#info: https://gree2.github.io/mac/2015/07/18/mac-network-commands-cheat-sheet
+	# info: https://gree2.github.io/mac/2015/07/18/mac-network-commands-cheat-sheet
 
 	case "$1" in
 		info)
@@ -230,9 +231,6 @@ close() (
 
 	echo -n -e "\033]0;$v\007"
 	osascript -e 'tell application "Terminal" to close (every window whose name contains "'$v'")' &
-
-	#killall "${$1:-'Terminal'}"
-	# osascript -e "quit app 'Terminal'"
 )
 
 # does nothing
@@ -252,7 +250,7 @@ cleanup () {
 
 
 # extended cd with ls overview 
--cd() (
+_cd() (
 	local lines=$(ls \-1$1$2)
 	IFS=$'\n' read -d '' -rA arr <<< $lines
 
@@ -430,7 +428,8 @@ lowercase(){
 
 uppercase(){ 
     echo "$1" | tr '[:lower:]' '[:upper:]' 
-}# vars
+}
+# vars
 # ref pulp fiction
 zed=".zprofile"
 

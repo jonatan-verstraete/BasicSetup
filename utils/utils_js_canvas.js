@@ -293,7 +293,7 @@ function markPoint(x, y, s = 20, { txt, stroke = "red" } = {}) {
     }
 }
 
-function circle(x = Xmid, y = Ymid, r = 200, stroke = "#000", fill) {
+function circle(x = Xmid, y = Ymid, r = 200, stroke = "#111", fill) {
     if (r < 0) r *= -1
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
@@ -1173,6 +1173,10 @@ function hslTo(h, s = 0, l = 0, hex = false, raw = true) {
 function mapNums(inp, minInput, maxInput, minOutput, maxOutput) {
     return (inp - minInput) * (maxOutput - minOutput) / (maxInput - minInput) + minOutput;
 }
+function scaleNum(inp, minInput, maxInput, minOutput, maxOutput) {
+    return (inp - minInput) * (maxOutput - minOutput) / (maxInput - minInput) + minOutput;
+}
+
 
 function roundTo(a, nr = 1) {
     return round(Math.ceil(a / nr) * nr)
