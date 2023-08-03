@@ -1,3 +1,3 @@
-cd /Users/home/Documents/Code/MyGitHelpers/
+cd /Users/home/Documents/Code/GitHelpers/
 bash ./update.sh
 bash ./push.sh

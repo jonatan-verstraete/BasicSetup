@@ -1,22 +1,69 @@
 # Macos bash cli helper functions
 
-This is a compact compiled version.
-Maybe in future update i include everything
+Simple helpers functions, mainly used for as helpers for easy access to files for writing and reading.
 
+## Setup
 
-### Usage
-[bash](utils/utils_bash.sh): add import for `utils_bash.sh` at `~/.zprofile` and make executable.
-  
-``` sh
-pth='~/.custom'
-mkdir $pth
-mv <downloadpath>/utils_bash.sh $pth/ 
-sudo chmod +x $pth/utils_bash.sh
+1. Place the folder in your root `/Users/home` with the name `.custom`.
 
-echo "done!"
+ie:
+
+```sh
+~/.custom
 ```
 
-[js](utils/utils_js_canvas.js): use in projects. See [example](examples/jsPerlin)
+2. Add following line of code to `~/.zprofile` to import the index file:
+
+```sh
+source .custom/index.sh
+```
+
+3. **[Optional]**: Update the path `pth_documents` in the `index.sh` file.
+
+This folder has the following structure. This for certain functions like `_books` or `_new`:
+
+```sh
+$pth_documents
+    ├── books
+    └── writings
+        ├── books
+        ├── ideas
+        ├── notes
+        └── stories
+```
+
+4. all in one
+
+```sh
+# enter path here
+$src='~/.custom'
+
+git pull link
+mv custom $src
+
+echo "source $src/index.sh" >> ~/.zprofile
+
+open $src/index.sh
 
 
-use the `allfunc` function to see all avalable options.
+# echo "Create folderstructure? This can always be done later."
+# read "fpth? Enter the path for the folders. Default: ~/Documents/custom" '~/Documents/custom'
+
+# if [[ "$answer" =~ ("y"|"yes") ]]; then
+#     mkdir -p
+
+fi;
+
+```
+
+## Help
+
+use: `_help` or `_custom help`.
+
+## about
+
+Some commands mayb not work
+
+Custom functions are all prefixed with a **":"**.
+
+Eg: **:cd**

@@ -1,0 +1,79 @@
+### Terminal, bash, macos
+
+Enable/diable trackpad:
+	defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool 	false
+	defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+
+
+
+Restart audio core:
+	sudo launchctl kickstart -kp system/com.apple.audio.coreaudiod
+
+
+Disable itunes lancher:
+	launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+
+
+Open py to exe:
+	 auto-py-to-exe
+
+
+Edit file creation&modify date:
+	touch -t 202204141103 file.pdf
+
+
+
+
+
+### MySql
+root:supersecret
+brew services stop mysql
+brew services start mysql
+brew services restart mysql
+
+Reset root user (after installation):
+pw: supersecret
+	mysql_secure_installation
+		-OR-
+	brew services stop mysql
+	pkill mysqld
+	rm -rf /usr/local/var/mysql/ # NOTE: this will delete your existing database!!!
+	brew postinstall mysql
+	brew services restart mysql
+	mysql -uroot
+
+Set global variables:
+	eg. SHOW VARIABLES LIKE 'validate_password%';
+
+	SET GLOBAL validate_password.number_count = 0;
+
+
+
+Alter phpMyAdmin path, phpMyAdmin, apache, http://localhost/Sites/phpmyadmin:
+    • restarting apache:
+
+        change in /private/etc/apache2/httpd.conf
+            ServerName => ServerName localhost
+            DocumentRoot & Directory => "/Users/mc.j"
+
+        sudo apachectl -k restart
+
+
+
+
+
+
+
+### SQL:
+
+Edit server 2 (due to having 2 mysql servers running: current 3007):
+/usr/local/etc/my.cnf
+
+Overview users: 
+	SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+Edit -root user password: 
+	ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'secret';
+
+Show mysql version
+	SELECT @@VERSION
