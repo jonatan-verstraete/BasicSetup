@@ -1,3 +1,6 @@
-cd /Users/home/Documents/Code/GitHelpers/
+
+# change this to workign directory
+cd ~/.custom/Git
+
 bash ./update.sh
 bash ./push.sh

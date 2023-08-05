@@ -32,7 +32,7 @@ $pth_documents
         └── stories
 ```
 
-4. all in one
+4. All in one
 
 ```sh
 # enter path here
